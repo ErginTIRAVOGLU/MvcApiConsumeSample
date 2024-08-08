@@ -1,0 +1,38 @@
+﻿@model List<ApiConsume.Models.Post>
+
+@{
+    ViewData["Title"] = "Posts";
+}
+
+<h1>Posts</h1>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model[0].Title)</th>
+                <th>@Html.DisplayNameFor(model => model[0].Body)</th>
+                <th>Detay</th>
+                <th>Güncelle</th>
+                <th>Sil</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var post in Model)
+            {
+                <tr>
+                    <td>@post.Title</td>
+                    <td>@post.Body</td>
+                    <td><a asp-controller="Post" asp-action="Detail" asp-route-id="@post.Id">Detay</a></td>
+                    <td><a asp-controller="Post" asp-action="Edit" asp-route-id="@post.Id">Güncelle</a></td>
+                    <td><a asp-controller="Post" asp-action="Delete" asp-route-id="@post.Id">Sil</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No posts found.</p>
+}

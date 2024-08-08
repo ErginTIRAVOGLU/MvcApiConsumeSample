@@ -1,0 +1,20 @@
+﻿@model ApiConsume.Models.Post
+
+@{
+    ViewData["Title"] = "Post Delete";
+}
+
+
+<form method="post">
+    <div style="color:red; font-size:20px"> Bu datayı silmek istediğinden emin misin</div>
+    <input asp-for="@Model.Id" type="hidden" />
+    <a asp-controller="post" asp-action="index">Vazgeç</a> |
+    <button type="submit">Sil</button>
+</form>
+
+<h1>@Model.Title</h1>
+
+<p>@Model.Body</p>
+
+<p><strong>User ID:</strong> @Model.UserId</p>
+<p><strong>Post ID:</strong> @Model.Id</p>
